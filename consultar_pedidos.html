@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Consultar Pedidos - SmartCote</title>
+</head>
+
+<body>
+    <header>
+        <h2 class="logo" name="logo">SmartCote</h2>
+        <nav class="navigation">
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+
+    <!-- Formulário para consultar pedido -->
+    <div id="cotacao">
+        <h2>Consultar Pedido</h2>
+        <label for="numero_solicitacao">Número da Solicitação:</label>
+        <input type="text" id="numero_solicitacao" name="numero_solicitacao">
+        <button onclick="buscarPedido()">Buscar Pedido</button>
+    </div>
+
+    <!-- Tabela para exibir o pedido -->
+    <div id="tabela_pedido" style="display: none;">
+        <h2>Pedido</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            <tbody id="tabela_corpo">
+            </tbody>
+        </table>
+    </div>
+
+    <div id="login_popup" class="popup">
+        <div class="popup_content">
+            <span class="close">&times;</span>
+            <h3>Login</h3>
+            <form id="login_form">
+                <label for="login_email">Email:</label>
+                <input type="email" id="login_email" name="login_email" required>
+                <label for="login_password">Senha:</label>
+                <input type="password" id="login_password" name="login_password" required>
+                <button type="submit">Entrar</button>
+
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Lembrar senha</label>
+                    <a href="#">Esqueceu sua senha?</a>
+                </div>
+
+                <div class="login-register">
+                    <p>Não tem uma conta? <a href="register.html" class="register-link">Registrar</a></p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="user_popup" class="popup">
+        <div class="popup_content">
+            <span class="close-user_popup">&times;</span>
+            <h3>Comprador</h3>
+            <form id="user_form">
+
+                <table>
+                    <tbody id="tabela_user">
+                    </tbody>
+                </table>
+                <button type="submit" onclick="clearUserData()">Desconectar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 SmartCote. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="app.js"></script>
+    <script src="login.js"></script>
+    
+</body>
+
+</html>

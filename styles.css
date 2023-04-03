@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --cor-principal: #045ec5;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background-color: var(--cor-principal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, .3);
+    user-select: none;
+}
+
+body section {
+    margin: 30px;
+}
+
+body section h2 {
+    margin: 10px;
+}
+
+body section ul {
+    margin: 10px 0 0 50px;
+}
+
+body section p {
+    margin: 0px 0 0 30px;
+}
+
+.logo {
+    color: white;
+    font-size: 2em;
+    user-select: none;
+}
+
+.navigation a {
+    color: white;
+    position: relative;
+    font-size: 1.1em;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navigation .btnLogin-popup {
+    color: white;
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: .5s;
+    margin-left: 40px;
+}
+
+.navigation .btnLogin-popup:hover {
+    background: #fff;
+    color: #162938;
+}
+
+/* .wrapper {
+    color: white;
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: scale(0);
+    transition: transform .5s, height .2s ease;
+    margin: 60px 0 0 0;
+} */
+
+h1 {
+    margin: 10px;
+    background-color: var(--cor-principal);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+#cotacao {
+    margin: 10px;
+}
+
+input,
+button {
+    margin: 5px;
+}
+
+#tabela_pedido {
+    margin: 10px;
+}
+
+table {
+
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid rgba(0, 0, 0, 0.200);
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    user-select: none;
+}
+
+/* Cards */
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 150px;
+    background-color: var(--cor-principal);
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card h3 {
+    font-size: 1.2em;
+    text-align: center;
+    padding: 10px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+footer {
+    color: rgb(0, 0, 0);
+    position: fixed;
+    bottom: 0;
+    font-size: 0.8em;
+    z-index: 99;
+    padding: 10px 0 10px 0;
+    backdrop-filter: blur(5px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, .3);
+    user-select: none;
+}
+
+/* Cadastro de compradores */
+main h2 {
+    user-select: none;
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+#comprador_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button[type="submit"] {
+
+    background-color: var(--cor-principal);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--cor-principal);
+}
+
+
+/* Pop up Login */
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.popup_content {
+    align-items: center;
+    background-color: #f4f4f4;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 5px;
+}
+
+.popup_content #login_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.popup_content #login_form .remember-forgot {
+    margin: 10px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup_content #login_form .remember-forgot a {
+    margin-left: 4px;
+    text-decoration: none;
+    color: var(--cor-principal);
+}
+
+.popup_content #login_form .login-register {
+    margin: 10px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.popup_content #login_form .login-register a {
+    margin-left: 4px;
+    text-decoration: none;
+    color: var(--cor-principal);
+}
+
+.popup_content #login_form button {
+    margin: 20px 100px 0px 100px
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.close-user_popup {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-user_popup:hover,
+.close-user_popup:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

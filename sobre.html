@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sobre - SmartCote</title>
+</head>
+
+<body>
+    <header>
+        <h2 class="logo" name="logo">SmartCote</h2>
+        <nav class="navigation">
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Sobre o SmartCote</h2>
+            <p>O SmartCote é um sistema inteligente e eficiente de gerenciamento e comparação de cotações, projetado
+                para facilitar a vida de empresas e compradores. Com o SmartCote, você pode obter rapidamente
+                informações sobre produtos e serviços, comparar preços, prazos e condições de pagamento, e tomar
+                decisões informadas para otimizar seus processos de compra.</p>
+        </section>
+
+        <section>
+            <h2>Recursos do SmartCote</h2>
+            <ul>
+                <li>Busca rápida de pedidos por número de solicitação</li>
+                <li>Comparação de cotações de fornecedores</li>
+                <li>Cadastro de empresas</li>
+                <li>Cadastro de fornecedores</li>
+                <li>Formulário para envio aos fornecedores</li>
+                <li>Armazenamento de dados</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Entre em contato</h2>
+            <p>Se você tiver dúvidas, sugestões ou precisar de suporte, entre em contato conosco:</p>
+            <p>Email: alanfrancisangra@gmail.com</p>
+            <p>Telefone: (24) 99220-8526</p>
+        </section>
+    </main>
+
+    <div id="login_popup" class="popup">
+        <div class="popup_content">
+            <span class="close">&times;</span>
+            <h3>Login</h3>
+            <form id="login_form">
+                <label for="login_email">Email:</label>
+                <input type="email" id="login_email" name="login_email" required>
+                <label for="login_password">Senha:</label>
+                <input type="password" id="login_password" name="login_password" required>
+                <button type="submit">Entrar</button>
+
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Lembrar senha</label>
+                    <a href="#">Esqueceu sua senha?</a>
+                </div>
+
+                <div class="login-register">
+                    <p>Não tem uma conta? <a href="register.html" class="register-link">Registrar</a></p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="user_popup" class="popup">
+        <div class="popup_content">
+            <span class="close-user_popup">&times;</span>
+            <h3>Comprador</h3>
+            <form id="user_form">
+
+                <table>
+                    <tbody id="tabela_user">
+                    </tbody>
+                </table>
+                <button type="submit" onclick="clearUserData()">Desconectar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 SmartCote. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="app.js"></script>
+    <script src="login.js"></script>
+
+</body>
+
+</html>
