@@ -32,6 +32,8 @@ async function loginUser(email, senha) {
                 console.log('Nome: ' + data.nome)
                 console.log('Key: ' + data.key)
 
+                toggleSlideShow(false);
+                cardContainer.style.display = "flex";;
             } else {
                 // Implemente aqui a lógica para informar o usuário sobre email ou senha incorretos.
             }

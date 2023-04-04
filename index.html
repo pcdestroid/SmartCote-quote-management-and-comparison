@@ -14,42 +14,54 @@
         <h2 class="logo" name="logo">SmartCote</h2>
         <nav class="navigation">
             <a href="index.html">Início</a>
-            <a href="sobre.html">Sobre</a>
+            <a href="pages/sobre.html">Sobre</a>
             <button class="btnLogin-popup">Login</button>
         </nav>
     </header>
 
-    <main>
+    <main class="cards-container">
         <div class="card-container">
-
-            <a href="nova_cotacao.html" class="card">
+            <a href="pages/nova_cotacao.html" class="card">
                 <h3>Nova Cotação</h3>
             </a>
-            <a href="consultar_pedidos.html" class="card">
+            <a href="pages/consultar_pedidos.html" class="card">
                 <h3>Consultar Pedidos</h3>
             </a>
-            <a href="consultar_mapas_cotacoes.html" class="card">
+            <a href="pages/consultar_mapas_cotacoes.html" class="card">
                 <h3>Consultar Mapas de Cotações</h3>
             </a>
         </div>
         <div class="card-container">
-            <a href="cadastrar_fornecedor.html" class="card">
+            <a href="pages/cadastrar_fornecedor.html" class="card">
                 <h3>Cadastrar Fornecedor</h3>
             </a>
-            <a href="cadastrar_empresa.html" class="card">
+            <a href="pages/cadastrar_empresa.html" class="card">
                 <h3>Cadastrar Empresa</h3>
             </a>
-            <a href="register.html" class="card">
+            <a href="pages/register.html" class="card">
                 <h3>Cadastrar Comprador</h3>
             </a>
         </div>
-
-
     </main>
+
+    <div class="slideshow-container" id="slideshow">
+        <div class="slide fade">
+            <img src="slide/1.png" style="width:100%">
+        </div>
+        <div class="slide fade">
+            <img src="slide/2.png" style="width:100%">
+        </div>
+        <div class="slide fade">
+            <img src="slide/3.png" style="width:100%">
+        </div>
+        <div class="slide fade">
+            <img src="slide/4.png" style="width:100%">
+        </div>
+    </div>
 
     <div id="login_popup" class="popup">
         <div class="popup_content">
-            <span class="close">&times;</span>
+            <span class="close close-btn">&times;</span>
             <h3>Login</h3>
             <form id="login_form">
                 <label for="login_email">Email:</label>
@@ -57,19 +69,17 @@
                 <label for="login_password">Senha:</label>
                 <input type="password" id="login_password" name="login_password" required>
                 <button type="submit">Entrar</button>
-
                 <div class="remember-forgot">
                     <label><input type="checkbox">Lembrar senha</label>
-                    <a href="#">Esqueceu sua senha?</a>
+                    <a href="pages/remember_forgot.html">Esqueceu sua senha?</a>
                 </div>
-
                 <div class="login-register">
-                    <p>Não tem uma conta? <a href="register.html" class="register-link">Registrar</a></p>
+                    <p>Não tem uma conta? <a href="pages/register.html" class="register-link">Registrar</a></p>
                 </div>
-
             </form>
         </div>
     </div>
+
 
     <div id="user_popup" class="popup">
         <div class="popup_content">
@@ -89,6 +99,8 @@
     <footer>
         <p>&copy; 2023 SmartCote. Todos os direitos reservados.</p>
     </footer>
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script src="app.js"></script>

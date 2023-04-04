@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../favicon.png" />
+    <link rel="stylesheet" href="../styles.css">
+    <title>Nova Cotação - SmartCote</title>
+</head>
+
+<body>
+    <header>
+        <h2 class="logo" name="logo">SmartCote</h2>
+        <nav class="navigation">
+            <a href="../index.html">Início</a>
+            <a href="consultar_pedidos.html">Consultar Pedidos</a>
+            <a href="consultar_mapas_cotacoes.html">Consultar Mapas</a>
+            <a href="cadastrar_fornecedor.html">Cadastrar Fornecedor</a>
+            <a href="cadastrar_empresa.html">Cadastrar Empresa</a>
+            <a href="register.html">Cadastrar Comprador</a>
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+
+    <!-- Formulário para consultar pedido -->
+    <div id="new-cote">
+        <h2>Nova Cotação</h2>
+
+    </div>
+
+    <div id="user_popup" class="popup">
+        <div class="popup_content">
+            <span class="close-user_popup">&times;</span>
+            <h3>Comprador</h3>
+            <form id="user_form">
+
+                <table>
+                    <tbody id="tabela_user">
+                    </tbody>
+                </table>
+                <button type="submit" onclick="clearUserData()">Desconectar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 SmartCote. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        if (!localStorage.getItem('nome')) { window.location.replace('../index.html'); }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="../app.js"></script>
+</body>
+
+</html>

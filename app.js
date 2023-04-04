@@ -6,16 +6,26 @@ const userPopup = document.getElementById("user_popup");
 const btnLoginPopup = document.querySelector(".btnLogin-popup");
 const span = document.getElementsByClassName("close")[0];
 const closeUserPopup = document.querySelector('.close-user_popup');
+const cardContainer = document.querySelector(".cards-container");
+const slideShow = document.querySelector(".slideshow-container");
+let slideIndex = 0;
 
 if (localStorage.getItem('nome')) {
     // Atualize o texto do botão de login
     const firstName = localStorage.getItem('nome').split(' ')[0];
     btnLoginPopup.textContent = firstName;
+    toggleSlideShow(false)
+    try { cardContainer.style.display = "flex"; } catch (e) { }
+} else {
+    try { cardContainer.style.display = "none"; } catch (e) { }
+    toggleSlideShow(true);
+    showSlides();
 }
+
 
 btnLoginPopup.onclick = function () {
     if (localStorage.getItem('nome')) {
-        userPopup.style.display = "block";
+        userPopup.style.display = "flex";
         const tabelaUser = document.getElementById("tabela_user");
         tabelaUser.innerHTML = "";
         let descUser = ['Nome:', 'Email:', 'Key:']
@@ -33,13 +43,22 @@ btnLoginPopup.onclick = function () {
         }
 
     } else {
-        loginPopup.style.display = "block";
+        loginPopup.style.display = "flex";
     }
 }
 
-span.onclick = function () {
-    loginPopup.style.display = "none";
-}
+try {
+    slideShow.onclick = function () {
+        showSlides();
+    }
+} catch (e) { }
+
+try {
+    span.onclick = function () {
+        loginPopup.style.display = "none";
+    }
+} catch (e) { }
+
 
 if (closeUserPopup) {
     closeUserPopup.onclick = function () {
@@ -102,5 +121,45 @@ function buscarPedido() {
 function clearUserData() {
     localStorage.removeItem('email');
     localStorage.removeItem('nome');
-    localStorage.removeItem('appKey');
+    localStorage.removeItem('key');
+    toggleSlideShow(true);
+    cardContainer.style.display = "none";
 }
+
+
+//slide
+
+function showSlides() {
+    try {
+        let i;
+        let slides = document.getElementsByClassName("slide");
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 10000); // Muda a imagem a cada 10 segundos
+    } catch (e) { }
+}
+
+function toggleSlideShow(show) {
+
+    try {
+        if (show) {
+            slideShow.style.display = "block";
+        } else {
+            slideShow.style.display = "none";
+        }
+    } catch (e) { }
+
+}
+
+
+
+
