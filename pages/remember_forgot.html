@@ -11,6 +11,9 @@
 
 <body>
     <header>
+        <div class="hamburger" onclick="toggleNav()">
+            <img src="../public/menu.svg" alt="Menu" />
+        </div>
         <h2 class="logo" name="logo">SmartCote</h2>
         <nav class="navigation">
             <a href="../index.html">Início</a>
@@ -35,7 +38,7 @@
                 <label for="login_password">Senha:</label>
                 <input type="password" id="login_password" name="login_password" required>
                 <button type="submit">Entrar</button>
-
+                <a class="erros"></a>
                 <div class="remember-forgot">
                     <label><input type="checkbox">Lembrar senha</label>
                     <a href="pages/remember_forgot.html">Esqueceu sua senha?</a>

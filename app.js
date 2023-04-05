@@ -22,9 +22,15 @@ if (localStorage.getItem('nome')) {
     showSlides();
 }
 
+function toggleNav() {
+    const navigation = document.querySelector('.navigation');
+    navigation.classList.toggle('open');
+}
+
 
 btnLoginPopup.onclick = function () {
     if (localStorage.getItem('nome')) {
+
         userPopup.style.display = "flex";
         const tabelaUser = document.getElementById("tabela_user");
         tabelaUser.innerHTML = "";
@@ -42,10 +48,14 @@ btnLoginPopup.onclick = function () {
             tabelaUser.appendChild(linha);
         }
 
+        
+
     } else {
         loginPopup.style.display = "flex";
     }
 }
+
+
 
 try {
     slideShow.onclick = function () {

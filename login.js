@@ -1,3 +1,5 @@
+
+const erros = document.querySelector(".erros")
 //Login
 document.getElementById("login_form").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -13,6 +15,10 @@ async function loginUser(email, senha) {
         .then(response => response.json()).then(data => {
             console.log('log: ' + data.message)
 
+            if (data.message === "Por favor, verifique seu e-mail antes de efetuar login.") {
+                erros.innerHTML = data.message;
+            }
+
             if (data.message === "Comprador logado.") {
                 // Implemente aqui a lógica para mostrar "Comprador logado" no lugar do botão de login.
 
@@ -20,7 +26,7 @@ async function loginUser(email, senha) {
                 localStorage.setItem('email', data.email);
                 localStorage.setItem('nome', data.nome);
                 localStorage.setItem('key', data.key);
-                
+
                 // Atualize o texto do botão de login
                 const firstName = data.nome.split(' ')[0];
                 btnLoginPopup.textContent = firstName;
@@ -33,7 +39,7 @@ async function loginUser(email, senha) {
                 console.log('Key: ' + data.key)
 
                 toggleSlideShow(false);
-                cardContainer.style.display = "flex";;
+                try { cardContainer.style.display = "flex"; } catch (e) { }
             } else {
                 // Implemente aqui a lógica para informar o usuário sobre email ou senha incorretos.
             }
