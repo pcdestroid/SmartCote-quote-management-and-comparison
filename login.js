@@ -1,4 +1,3 @@
-
 const erros = document.querySelector(".erros")
 //Login
 document.getElementById("login_form").addEventListener("submit", async (e) => {
@@ -13,11 +12,6 @@ async function loginUser(email, senha) {
     let action = 'login'
     await fetch(`${webAppUrl}?action=${action}&email=${email}&senha=${senha}`)
         .then(response => response.json()).then(data => {
-            console.log('log: ' + data.message)
-
-            if (data.message === "Por favor, verifique seu e-mail antes de efetuar login.") {
-                erros.innerHTML = data.message;
-            }
 
             if (data.message === "Comprador logado.") {
                 // Implemente aqui a lógica para mostrar "Comprador logado" no lugar do botão de login.
@@ -34,14 +28,13 @@ async function loginUser(email, senha) {
                 // Feche o popup de login
                 loginPopup.style.display = "none";
 
-                console.log('Email: ' + data.email)
-                console.log('Nome: ' + data.nome)
-                console.log('Key: ' + data.key)
-
                 toggleSlideShow(false);
-                try { cardContainer.style.display = "flex"; } catch (e) { }
+                
+                // try { cardContainer.style.display = "flex"; } catch (e) { }
+                window.location.href = "../index.html";
             } else {
                 // Implemente aqui a lógica para informar o usuário sobre email ou senha incorretos.
+                erros.innerHTML = data.message;
             }
         })
         .catch((error) => {
