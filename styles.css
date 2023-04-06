@@ -204,7 +204,7 @@ footer {
     position: relative;
     bottom: 0;
     font-size: 0.8em;
-    z-index: 99;
+    z-index: 9;
     padding: 10px 0 10px 0;
     backdrop-filter: blur(5px);
     width: 100%;
@@ -409,7 +409,7 @@ input[type="password"] {
     font-size: 13px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 844px) {
     .slideshow-container {
         height: auto;
     }
@@ -417,10 +417,26 @@ input[type="password"] {
     .slide img {
         height: auto;
     }
+    
 }
 
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 850px) {
     /* Seu CSS para dispositivos com largura de tela menor ou igual a 600px */
+
+
+    footer {
+        color: rgb(0, 0, 0);
+        position: relative;
+        bottom: 0;
+        left: 0;
+        font-size: 0.5em;
+        z-index: 9;
+        padding: 10px 0 10px 0;
+        width: 100%;
+        border: 2px solid rgba(255, 255, 255, .3);
+        user-select: none;
+    }
 
     .hamburger {
         display: flex;
@@ -431,11 +447,11 @@ input[type="password"] {
     }
 
     .navigation {
-
+        z-index: 10;
         display: none;
         position: absolute;
         background-color: #ffffff;
-        top: 100%;
+        top: 110%;
         flex-direction: column;
         width: 220px;
         height: 300px;
@@ -444,14 +460,22 @@ input[type="password"] {
     }
 
     .navigation.open {
+        z-index: 10;
         display: flex;
         justify-content: center;
         left: 0;
     }
 
     .navigation.open a {
+        padding: 5px;
         margin: 5px;
         color: #000000;
+    }
+
+    .navigation.open a:hover {
+        color: #000000;
+        background: hsla(212, 100%, 50%, 0.1);
+        border-radius: 5px;
     }
 
     .navigation.open button {
