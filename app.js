@@ -27,7 +27,6 @@ function toggleNav() {
     navigation.classList.toggle('open');
 }
 
-
 btnLoginPopup.onclick = function () {
     if (localStorage.getItem('nome')) {
 
@@ -48,14 +47,10 @@ btnLoginPopup.onclick = function () {
             tabelaUser.appendChild(linha);
         }
 
-
-
     } else {
         loginPopup.style.display = "flex";
     }
 }
-
-
 
 try {
     slideShow.onclick = function () {
@@ -75,7 +70,6 @@ if (closeUserPopup) {
         userPopup.style.display = "none";
     }
 }
-
 
 window.onclick = function (event) {
     if (event.target == loginPopup) {

@@ -127,8 +127,6 @@ document.getElementById("cpf_cnpj").addEventListener("change", function (event) 
     }
 });
 
-
-
 async function buscarCEP(cep) {
     // Remove traço do CEP, se houver
     cep = cep.replace('-', '');

@@ -1,7 +1,5 @@
 const key = document.getElementById("app_key"); // Adicione um campo App Key no seu formulário HTML
 
-
-
 document.getElementById("comprador_form").addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -25,8 +23,6 @@ document.getElementById("comprador_form").addEventListener("submit", function (e
                 console.error('Error:', error);
             })
     }
-
-
 
     registerUser(nome, email, telefone, hashedPassword, key.value)
 

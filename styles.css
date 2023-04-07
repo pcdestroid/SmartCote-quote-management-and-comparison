@@ -580,6 +580,8 @@ input[type="checkbox"] {
     flex-direction: row;
 }
 
+
+
 #cadastro-fornecedor form {
     display: flex;
     flex-wrap: wrap;
@@ -605,11 +607,41 @@ input[type="checkbox"] {
 }
 
 #cadastro-fornecedor form .grupos-add {
-    color: #045ec5;
+    color: #000000;
     margin: 20px;
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+#fornecedor_form .delete-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(211, 0, 0, 0.8);
+    margin: 0 0 0 15px;
+    height: 15px;
+    padding: 15px;
+    width: 10px;
+}
+
+#fornecedor_form .delete-group:hover {
+    background: rgb(255, 0, 0, 0.8);
+}
+
+#cadastro-fornecedor form .grupos-add #group-list li {
+    margin: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0px 0px 0px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.200);
+}
+
+#cadastro-fornecedor form .grupos-add #group-list li:hover {
+    background: rgba(255, 0, 0, 0.1);
+
 }
 
 #cadastro-fornecedor .form-group {
