@@ -48,7 +48,7 @@ btnLoginPopup.onclick = function () {
             tabelaUser.appendChild(linha);
         }
 
-        
+
 
     } else {
         loginPopup.style.display = "flex";
@@ -169,7 +169,3 @@ function toggleSlideShow(show) {
     } catch (e) { }
 
 }
-
-
-
-

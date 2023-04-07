@@ -20,6 +20,7 @@ img {
 
 :root {
     --cor-principal: #045ec5;
+    --cor-button-hover: #0077ff;
 }
 
 body {
@@ -44,6 +45,12 @@ header {
     z-index: 99;
     backdrop-filter: blur(5px);
     border: 2px solid rgba(255, 255, 255, .3);
+    user-select: none;
+}
+
+h2,
+h3 {
+    margin-top: 10px;
     user-select: none;
 }
 
@@ -132,6 +139,7 @@ h1 {
 input,
 button {
     margin: 5px;
+    width: 100%;
 }
 
 #tabela_pedido {
@@ -197,6 +205,7 @@ td {
 .card:hover {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
+    background-color: var(--cor-button-hover);
 }
 
 footer {
@@ -215,9 +224,6 @@ footer {
 }
 
 /* Cadastro de compradores */
-main h2 {
-    user-select: none;
-}
 
 form {
     width: 100%;
@@ -240,18 +246,24 @@ label {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
-    padding: 10px;
+input[type="password"],
+input[type="tel"] {
+    padding: 3px;
     font-size: 16px;
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
+input[type="checkbox"] {
+    width: 15px;
+}
+
 #comprador_form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 300px;
 }
 
 #comprador_form button[type="submit"] {
@@ -290,7 +302,7 @@ input[type="password"] {
     color: white;
     padding: 10px 20px;
     margin-top: 20px;
-    width: 200px;
+    width: 338px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
@@ -310,18 +322,18 @@ input[type="password"] {
 .popup_content #login_form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
+
 }
 
 .popup_content #login_form .remember-forgot {
+    font-size: 15px;
     margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .popup_content #login_form .remember-forgot a {
-    margin-left: 5px;
+    margin-left: 3px;
+
     text-decoration: none;
     color: var(--cor-principal);
 }
@@ -339,6 +351,7 @@ input[type="password"] {
 }
 
 .close {
+    user-select: none;
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -406,7 +419,7 @@ input[type="password"] {
 
 .erros {
     color: red;
-    font-size: 13px;
+    font-size: 0.7em;
 }
 
 @media screen and (max-width: 844px) {
@@ -417,7 +430,7 @@ input[type="password"] {
     .slide img {
         height: auto;
     }
-    
+
 }
 
 
@@ -530,10 +543,125 @@ input[type="password"] {
         background-color: var(--cor-principal);
         color: white;
         padding: 10px 20px;
-        width: 40vw;
+        width: 287px;
         font-size: 16px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
     }
+
+    .popup .popup button[type="submit"]:hover {
+        background-color: var(--cor-button-hover);
+    }
+}
+
+/* Cadastro de fornecedores */
+#cadastro-fornecedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    user-select: none;
+}
+
+#cadastro-fornecedor h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#fornecedor_form {
+    display: flex;
+    flex-direction: row;
+}
+
+#cadastro-fornecedor form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#cadastro-fornecedor form .dados .cep_uf {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#cadastro-fornecedor form .dados #uf {
+    margin-left: 10px;
+    text-align: center;
+    width: 50px;
+}
+
+#cadastro-fornecedor form .dados #cep {
+    text-align: center;
+    width: 200px;
+}
+
+#cadastro-fornecedor form .grupos-add {
+    color: #045ec5;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#cadastro-fornecedor .form-group {
+    display: flex;
+    margin-bottom: 10px;
+    width: 48%;
+}
+
+#cadastro-fornecedor label {
+    margin-bottom: 5px;
+}
+
+#cadastro-fornecedor input[type="text"],
+#cadastro-fornecedor input[type="email"] {
+    padding: 3px;
+    font-size: 16px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#cadastro-fornecedor button {
+    background-color: var(--cor-principal);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#cadastro-fornecedor button:hover {
+    background-color: var(--cor-button-hover);
+}
+
+.autocomplete-items {
+    z-index: 99;
+    position: absolute;
+    background: #fff;
+    width: 390px;
+}
+
+.autocomplete-items div:hover {
+    background: hsla(212, 100%, 50%, 0.1);
+}
+
+#autocomplete {
+    padding: 3px;
+    font-size: 16px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }

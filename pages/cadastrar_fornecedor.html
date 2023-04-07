@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../favicon.png" />
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <title>Cadastrar Fornecedor</title>
 </head>
 
@@ -24,11 +27,58 @@
             <a href="register.html">Cadastrar Comprador</a>
             <button class="btnLogin-popup">Login</button>
         </nav>
+
     </header>
 
     <!-- Formulário para cadastrar fornecedor -->
+
+    <h2>Cadastrar Fornecedor</h2>
+
     <div id="cadastro-fornecedor">
-        <h2>Cadastrar Fornecedor</h2>
+
+        <a class="erros"></a>
+
+        <form id="fornecedor_form">
+
+            <div class="dados">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" autocomplete="off" required>
+                <label for="cnpj_cpf">CNPJ ou CPF:</label>
+                <input type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="Digite o CNPJ ou CPF" autocomplete="off"
+                    required>
+                <label for="email">Email:</label>
+
+                <input type="email" id="email" name="email" autocomplete="off" required>
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" autocomplete="off" required>
+
+                <div class="cep_uf">
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" onblur="buscarCEP(this.value)" autocomplete="off" required>
+                    <label for="uf">UF:</label>
+                    <input type="text" id="uf" name="uf" autocomplete="off" required>
+                </div>
+
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required>
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required>
+
+            </div>
+
+            <div class="grupos">
+                <!-- Outros campos do formulário -->
+                <label for="autocomplete">Adicionar Grupo de Materiais:</label>
+                <input id="autocomplete" autocomplete="off">
+
+            </div>
+            <button type="button" id="add-group">Adicionar Grupo</button>
+            <div class="grupos-add">
+                <ul id="group-list"></ul>
+            </div>
+
+            <button type="submit">Cadastrar Fornecedor</button>
+        </form>
     </div>
 
     <div id="user_popup" class="popup">
@@ -51,8 +101,95 @@
     </footer>
     <script>
         if (!localStorage.getItem('nome')) { window.location.replace('../index.html'); }
+
+        const products = ["Construção", "Limpeza", "Elétricos", "Escritório", "Hidráulicos", "Pintura", "Jardinagem", "Serralheria", "Marcenaria", "Iluminação", "Comunicação", "Segurança", "Automação", "Refrigeração", "Mecânica", "Ferramentas", "Equipamentos de Proteção Individual (EPIs)", "Equipamentos de Segurança", "Equipamentos de Medição", "Produtos Químicos", "Alimentação", "Material de Embalagem", "Material de Limpeza Automotiva", "Material Esportivo", "Produtos de Beleza e Cuidado Pessoal", "Produtos para Animais", "Produtos de Papelaria", "Material para Festas", "Artesanato", "Produtos Eletrônicos", "Instrumentos Musicais", "Móveis", "Equipamentos de Informática", "Roupas e Acessórios", "Calçados", "Produtos para Jóias e Bijuterias", "Produtos de Limpeza Industrial", "Produtos Químicos para Limpeza", "Material de Construção Civil", "Acessórios para Celulares e Tablets", "Produtos para Cama, Mesa e Banho", "Artigos para Decoração", "Produtos de Limpeza para Cozinha", "Fios e Cabos Elétricos", "Equipamentos para Academia", "Produtos para Piscina", "Produtos para Spa e Sauna", "Ferragens", "Produtos para Impressão", "Tintas para Impressão", "Equipamentos para Fotografia", "Equipamentos para Áudio e Vídeo", "Produtos para Agricultura", "Produtos para Pesca", "Produtos para Camping", "Produtos para Náutica", "Artigos para Bebês e Crianças", "Produtos para Saúde e Bem-Estar", "Produtos para Fitness", "Produtos de Limpeza para Carpetes e Tapetes", "Produtos para Limpeza de Vidros", "Produtos de Limpeza para Pisos", "Produtos para Animais de Estimação", "Acessórios para Veículos", "Peças para Veículos", "Produtos para Manutenção de Veículos", "Produtos para Embelezamento de Veículos", "Produtos para Construção Naval", "Equipamentos para Laboratório", "Produtos para Cervejarias", "Produtos para Vinícolas", "Produtos para Destilarias", "Alimentos e Bebidas", "Cosméticos", "Produtos Farmacêuticos (Hospitalares)", "Produtos para Plásticos", "Rolamentos", "Borracha", "Produtos para Pintura Automotiva"];
+
+        function autocomplete(inp, arr) {
+            var currentFocus;
+            inp.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+                closeAllLists();
+                if (!val) { return false; }
+                currentFocus = -1;
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                this.parentNode.appendChild(a);
+                for (i = 0; i < arr.length; i++) {
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        b = document.createElement("DIV");
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        b.addEventListener("click", function (e) {
+                            inp.value = this.getElementsByTagName("input")[0].value;
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            inp.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    currentFocus++;
+                    addActive(x);
+                } else if (e.keyCode == 38) {
+                    currentFocus--;
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+            function addActive(x) {
+                if (!x) return false;
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+        autocomplete(document.getElementById("autocomplete"), products);
+
+        // ... (código de preenchimento automático)
+        const groupList = document.getElementById("group-list");
+        const addGroupBtn = document.getElementById("add-group");
+        const groupInput = document.getElementById("autocomplete");
+
+        addGroupBtn.addEventListener("click", () => {
+            const groupName = groupInput.value.trim();
+            if (groupName) {
+                const listItem = document.createElement("li");
+                listItem.textContent = groupName;
+                groupList.appendChild(listItem);
+                groupInput.value = "";
+            }
+        });
+
     </script>
     <script src="../app.js"></script>
+    <script src="../validate.js"></script>
 
 </body>
 
